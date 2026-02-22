@@ -12,28 +12,26 @@ const deletedCards = [];
 const interviewCards = [];
 const rejectedCards = [];
 
-let cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-    const deleteBtn = card.querySelector('.remove');
-    deleteBtn.addEventListener('click', function () {
+document.addEventListener('click', function (event) {
+
+    // I learned and got help from ChatGpt for this part.
+    const card = event.target.closest('.card');
+    if (!card) return;
+
+    if (event.target.classList.contains('remove')) {
+        console.log(card);
         card.remove();
         deletedSection(card);
-    })
-    const addInterviewBtn = card.querySelector('.addInterview');
-    addInterviewBtn.addEventListener('click', function () {
-        card.classList.remove('rejected');
-        card.classList.add('interview');
+    }
+
+    if (event.target.classList.contains('addInterview')) {
         interviewSectionUpdate(card);
-        console.log(interviewCards);
-    })
-    const addRejectedBtn = card.querySelector('.addRejected');
-    addRejectedBtn.addEventListener('click', function () {
-        card.classList.remove('interview');
-        card.classList.add('rejected');
+    }
+
+    if (event.target.classList.contains('addRejected')) {
         rejectedSectionUpdate(card);
-        console.log(rejectedCards);
-    })
-})
+    }
+});
 
 
 function deletedSection(card) {
@@ -42,33 +40,52 @@ function deletedSection(card) {
 }
 
 function interviewSectionUpdate(card) {
-    if (interviewCards.includes(card)) {
+    console.log(card.id);
+    if (interviewCards.includes(card.id)) {
         return;
     }
     else {
-        const newInterviewCard = document.createElement('div');
-        newInterviewCard.innerHTML = card.innerHTML;
-        newInterviewCard.className = "interview card p-5 bg-white space-y-4 rounded-md";
-        interviewCards.push(newInterviewCard);
-        console.log(interviewCards);
+        const newCard = card.cloneNode(true);
+        const rejectedSection = document.querySelector('.rejectedSection');
+        rejectedSection.childNodes.forEach(oldCard => {
+            if (oldCard.id === card.id) {
+                oldCard.remove();
+            }
+        });
         const interviewSection = document.querySelector('.interviewSection');
-        interviewSection.appendChild(newInterviewCard);
-        interviewCards.push(card);
+        interviewSection.appendChild(newCard);
+        interviewCards.push(card.id);
+        console.log(interviewCards);
+        updatedCounts(interviewCards);
     }
 }
 
-function rejectedSectionUpdate(card){
-    if(rejectedCards.includes(card)){
+function rejectedSectionUpdate(card) {
+    console.log(card.id);
+    if (rejectedCards.includes(card.id)) {
         return;
     }
-    else{
-        const newRejectedCard = document.createElement('div');
-        newRejectedCard.innerHTML = card.innerHTML;
-        newRejectedCard.className = "rejected card p-5 bg-white space-y-4 rounded-md";
-        rejectedCards.push(newRejectedCard);
-        console.log(rejectedCards);
+    else {
+        const newCard = card.cloneNode(true);
+        const interviewSection = document.querySelector('.interviewSection');
+        interviewSection.childNodes.forEach(oldCard => {
+            if (oldCard.id === card.id) {
+                oldCard.remove();
+            }
+        });
         const rejectedSection = document.querySelector('.rejectedSection');
-        rejectedSection.appendChild(newRejectedCard);
-        rejectedCards.push(card);
+        rejectedSection.appendChild(newCard);
+        rejectedCards.push(card.id);
+        console.log(rejectedCards);
+        updatedCounts(rejectedCards);
+    }
+}
+
+function updatedCounts(arr) {
+    if (arr == rejectedCards) {
+        document.getElementById('rejectedCount').innerHTML = arr.length;
+    }
+    else if (arr == interviewCards) {
+        document.getElementById('interviewCount').innerHTML = arr.length;
     }
 }
