@@ -29,15 +29,15 @@
         <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="bg-white p-5 rounded-sm">
                 <p>Total</p>
-                <p class="text-[20px] font-semibold">8</p>
+                <p id="allCount" class="text-[20px] font-semibold">8</p>
             </div>
             <div class="bg-white p-5 rounded-sm">
                 <p>Interview</p>
-                <p class="text-[20px] font-semibold">0</p>
+                <p id="interviewCount" class="text-[20px] font-semibold">0</p>
             </div>
             <div class="bg-white p-5 rounded-sm">
                 <p>Rejected</p>
-                <p class="text-[20px] font-semibold">0</p>
+                <p id="rejectedCount" class="text-[20px] font-semibold">0</p>
             </div>
         </div>
     </header>
@@ -48,14 +48,14 @@
             <div>8 <span>jobs</span></div>
         </section>
         <section class="space-x-2">
-            <button id="all"
+            <button onclick="showSection('allSection')"
                 class="btn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">All</button>
-            <button id="interview"
+            <button onclick="showSection('interviewSection')"
                 class="btn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">Interview</button>
-            <button id="rejected"
+            <button onclick="showSection('rejectedSection')"
                 class="btn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">Rejected</button>
         </section>
-        <section class="pt-4 space-y-4 pb-16">
+        <section class="all pt-4 space-y-4 pb-16">
             <div id="1" class="card p-5 bg-white space-y-4 rounded-md">
                 <div class="flex justify-between items-center">
                     <div>
@@ -67,7 +67,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -89,7 +89,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -111,7 +111,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -133,7 +133,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -155,7 +155,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -177,7 +177,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -199,7 +199,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -221,7 +221,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="status px-3 py-2 bg-[#EEF4ff] w-21 rounded-sm">Not Applied</p>
+                    <p class="currentStatus bg-[#EEF4FF] px-3 py-2 rounded-md w-[85px]">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -233,8 +233,11 @@
                 </div>
             </div>
         </section>
+        <section class="interview pt-4 space-y-4 pb-16"></section>
+        <section class="rejected pt-4 space-y-4 pb-16"></section>
     </section>
-   <script src="scripts/script.js"></script>
+
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>

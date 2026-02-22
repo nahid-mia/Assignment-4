@@ -1,45 +1,46 @@
-const cards = document.querySelectorAll(".card");
-// console.log(cards);
-const allPage = document.getElementById("all");
-// console.log(allPage);
-const interviewPage = document.getElementById("interview");
-// console.log(interviewPage);
-const rejectedPage = document.getElementById("rejected");
-// console.log(rejectedPage);
+// showSection function create -- allSection, interviewSection, rejectedSection
+// count id's allCount, interviewCount, rejectedCount
+// interview, rejected btn -- class - addInterview, addRejected
 
-const jobs = [];
 
-cards.forEach((card) => {
-    const cardId = card.id;
-    jobs[cardId] = {
-        Element: card,
-        status: card.querySelector(".status").innerHTML
-    }
-    // I learned This part from chatgpt
+let cards = document.querySelectorAll(".card");
+let rejectedCount = 0;
+let allCount = 8;
+console.log(cards);
 
-    const addInterviewBtn = card.querySelector(".addInterview");
-    const addRejectedBtn = card.querySelector(".addRejected");
-    const deleteCardBtn = card.querySelector(".remove");
+cards.forEach(card => {
+    const addInterviewBtn = card.querySelector('.addInterview');
+    const addRejectedBtn = card.querySelector('.addRejected');
+    const deleteBtn = card.querySelector('.remove');
 
-    addInterviewBtn.addEventListener("click", () => {
-        jobs[cardId].status = "interview";
-        interviewPage.appendChild(card);
+    deleteBtn.addEventListener("click", function () {
+        card.remove();
+        let cards = document.querySelectorAll(".card");
+        const allCount = document.querySelector("#allCount");
+        allCount.innerHTML = cards.length;
     });
 
-    addRejectedBtn.addEventListener("click", () => {
-        jobs[cardId].status = "rejected";
-        rejectedPage.appendChild(card);
+    addInterviewBtn.addEventListener("click", function () {
+        const newCard = card.cloneNode(true);
+        const currentStatus = newCard.querySelector(".currentStatus");
+        currentStatus.textContent = "Interview";
+        const interviewSection = document.querySelector(".interview");
+        const interviewSectionCards = interviewSection.childNodes;
+        for (const interviewCard of interviewSectionCards) {
+            if (interviewCard.id == newCard.id) {
+                return;
+            }
+        }
+        interviewSection.appendChild(newCard);
+        const interviewCount = document.querySelector("#interviewCount");
+        interviewCount.innerHTML = interviewSectionCards.length;
+    })
+
+    addRejectedBtn.addEventListener("click", function () {
+        const newCard = card.cloneNode(true);
+        const rejectedSection = document.querySelector(".rejected");
+        rejectedSection.appendChild(newCard);
+        console.log(rejectedSection);
     });
 
-    deleteCardBtn.addEventListener("click", () => {
-        removeCard(cardId);
-    });
-});
-
-
-function removeCard(cardId) {
-    jobs[cardId].element.remove();
-    delete jobs[cardId];
-    newTabs();
-    newCount();
-}
+})
