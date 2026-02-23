@@ -21,7 +21,27 @@ document.addEventListener('click', function (event) {
     if (event.target.classList.contains('remove')) {
         console.log(card);
         card.remove();
-        deletedSection(card);
+        const rejectedSection = document.querySelector('.rejectedSection');
+        rejectedSection.childNodes.forEach(oldCard => {
+            if (oldCard.id === card.id) {
+                oldCard.remove();
+                rejectedCards.splice(rejectedCards.indexOf(card.id), 1);
+                console.log(rejectedCards);
+                updatedCounts(rejectedCards);
+            }
+        });
+        const interviewSection = document.querySelector('.interviewSection');
+        interviewSection.childNodes.forEach(oldCard => {
+            if (oldCard.id === card.id) {
+                oldCard.remove();
+                interviewCards.splice(interviewCards.indexOf(card.id), 1);
+                console.log(interviewCards);
+                updatedCounts(interviewCards);
+            }
+        });
+        const allSection = document.querySelector('.allSection');
+        const allCount = document.getElementById('allCount');
+        allCount.innerHTML = allSection.childElementCount;
     }
 
     if (event.target.classList.contains('addInterview')) {
@@ -34,10 +54,6 @@ document.addEventListener('click', function (event) {
 });
 
 
-function deletedSection(card) {
-    deletedCards.push(card);
-    console.log(deletedCards);
-}
 
 function interviewSectionUpdate(card) {
     console.log(card.id);
@@ -50,8 +66,12 @@ function interviewSectionUpdate(card) {
         rejectedSection.childNodes.forEach(oldCard => {
             if (oldCard.id === card.id) {
                 oldCard.remove();
+                rejectedCards.splice(rejectedCards.indexOf(card.id), 1);
+                console.log(rejectedCards);
+                updatedCounts(rejectedCards);
             }
         });
+
         const interviewSection = document.querySelector('.interviewSection');
         interviewSection.appendChild(newCard);
         interviewCards.push(card.id);
@@ -71,6 +91,9 @@ function rejectedSectionUpdate(card) {
         interviewSection.childNodes.forEach(oldCard => {
             if (oldCard.id === card.id) {
                 oldCard.remove();
+                interviewCards.splice(interviewCards.indexOf(card.id), 1);
+                console.log(interviewCards);
+                updatedCounts(interviewCards);
             }
         });
         const rejectedSection = document.querySelector('.rejectedSection');
