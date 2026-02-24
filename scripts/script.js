@@ -90,9 +90,6 @@ document.addEventListener('click', function (event) {
             updateRejectedSectionRightJobCount();
         }
         showEmptyCard();
-        console.log(rejectedCards);
-        console.log(interviewCards);
-        console.log(interviewSection.childNodes);
     }
 
     if (event.target.classList.contains('addInterview')) {
