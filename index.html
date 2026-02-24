@@ -16,9 +16,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/style.css">
     <style>
         * {
-            font-family: "Agdasima", sans-serif;
+            font-family: "Geist", sans-serif;
         }
     </style>
 </head>
@@ -29,37 +30,37 @@
         <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="bg-white p-5 rounded-sm">
                 <p>Total</p>
-                <p id="allCount" class="text-[20px] font-semibold">8</p>
+                <p id="allCount" class="text-[24px] font-semibold">8</p>
             </div>
             <div class="bg-white p-5 rounded-sm">
                 <p>Interview</p>
-                <p id="interviewCount" class="text-[20px] font-semibold">0</p>
+                <p id="interviewCount" class="text-[24px] font-semibold text-[#10B981]">0</p>
             </div>
             <div class="bg-white p-5 rounded-sm">
                 <p>Rejected</p>
-                <p id="rejectedCount" class="text-[20px] font-semibold">0</p>
+                <p id="rejectedCount" class="text-[24px] font-semibold text-[#EF4444]">0</p>
             </div>
         </div>
     </header>
     <hr class="max-w-[1100px] mx-auto text-[#E6E7E9] pb-[30px]">
     <section class="max-w-[1100px] mx-auto">
         <section class="flex justify-between pb-6">
-            <h3 class="text-[18px] font-semibold">Available Jobs</h3>
-            <div>8 <span>jobs</span></div>
+            <h3 class="text-[24px] font-semibold">Available Jobs</h3>
+            <div id="rightJob">8<span>jobs</span></div>
         </section>
         <section class="space-x-2">
-            <button onclick="showSection('allSection')"
-                class="btn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">All</button>
-            <button onclick="showSection('interviewSection')"
-                class="btn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">Interview</button>
-            <button onclick="showSection('rejectedSection')"
-                class="btn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">Rejected</button>
+            <button id="allSectionBtn"
+                class="btn sectionBtn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">All</button>
+            <button id="interviewSectionBtn"
+                class="btn sectionBtn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">Interview</button>
+            <button id="rejectedSectionBtn"
+                class="btn sectionBtn sm:btn-sm md:btn-md lg:btn-lg btn-primary btn-soft text-black hover:text-white">Rejected</button>
         </section>
         <section class="allSection pt-4 space-y-4 pb-16">
             <div id="1" class="card p-5 bg-white space-y-4 rounded-md">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h3 class="text-[18px] font-semibold">Mobile First Corp</h3>
+                        <h3 class="text-[22px] font-semibold">Mobile First Corp</h3>
                         <p>React Native Developer</p>
                     </div>
                     <button class="border rounded-full p-1 border-[#F1F2F4]">
@@ -68,7 +69,7 @@
                 </div>
                 <p>Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
@@ -95,7 +96,7 @@
                     •
                     $80,000 - $120,000</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Create stunning web experiences for high-profile clients. Must have portfolio and experience with
                         modern web design trends.</p>
                 </div>
@@ -122,7 +123,7 @@
                     •
                     $125,000 - $165,000</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong
                         analytical thinking.
                     </p>
@@ -150,7 +151,7 @@
                     •
                     $140,000 - $190,000</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps
                         practices and cloud infrastructure.</p>
                 </div>
@@ -177,7 +178,7 @@
                     •
                     $110,000 - $150,000</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Create beautiful and functional user interfaces for our suite of products. Strong design skills
                         and frontend development expertise required.</p>
                 </div>
@@ -204,7 +205,7 @@
                     •
                     $130,000 - $170,00</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Build enterprise applications with JavaScript and modern frameworks. We offer competitive
                         compensation, health insurance, and professional development opportunities.</p>
                 </div>
@@ -231,7 +232,7 @@
                     •
                     $120,000 - $160,000</p>
                 <div>
-                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-[85px] rounded-md">Not Applied</p>
+                    <p class="currentStatus px-3 py-2 bg-[#EEF4ff] w-fit rounded-md">Not Applied</p>
                     <p>Join our fast-growing startup and work on our core platform. Experience with Node.js and React
                         required. Great benefits and equity package included.</p>
                 </div>
@@ -270,7 +271,7 @@
                 </div>
             </div>
         </section>
-        <section class="interviewSection pt-4 space-y-4 pb-16"></section>
+        <section class="interviewSection pt-4 pb-16"></section>
         <section class="rejectedSection pt-4 space-y-4 pb-16"></section>
     </section>
 

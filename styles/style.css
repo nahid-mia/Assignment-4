@@ -1,0 +1,24 @@
+.interview {
+    border-left: 4px solid green;
+}
+
+.rejected {
+    border-left: 4px solid red;
+}
+
+.interview .currentStatus {
+    background-color: white !important;
+    color: green !important;
+    border: 2px solid green !important;
+}
+
+.rejected .currentStatus {
+    background-color: white !important;
+    color: red !important;
+    border: 2px solid red !important;
+}
+
+.active {
+    background-color: rgba(0, 0, 255, 0.93) !important;
+    color: white !important;
+}
